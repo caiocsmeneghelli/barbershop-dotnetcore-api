@@ -14,5 +14,10 @@ namespace BarberShop.Domain.Models
         public string Name { get; private set; }
         public string LastName { get; private set; }
         public string Phone { get; private set; }
+
+        public void ChangePhoneNumber(string number)
+        {
+            Phone = number;
+        }
     }
 }

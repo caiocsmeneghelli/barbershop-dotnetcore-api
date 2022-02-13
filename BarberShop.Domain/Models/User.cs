@@ -14,5 +14,10 @@ namespace BarberShop.Domain.Models
         public string Password { get; private set; }
         public string Role { get; private set; }
 
+
+        public void ChangePassword(string password)
+        {
+            Password = password;
+        }
     }
 }

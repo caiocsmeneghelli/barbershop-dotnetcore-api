@@ -14,5 +14,15 @@ namespace BarberShop.Domain.Models
             LastName = lastName;
             email = Email;
         }
+
+        public void UpdateEmail(string email)
+        {
+            Email = email;
+        }
+        public void UpdateName(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }
