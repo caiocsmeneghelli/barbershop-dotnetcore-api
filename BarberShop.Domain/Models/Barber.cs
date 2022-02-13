@@ -13,6 +13,7 @@ namespace BarberShop.Domain.Models
             FirstName = firstName;
             LastName = lastName;
             email = Email;
+            role = "Barber";
         }
 
         public void UpdateEmail(string email)
