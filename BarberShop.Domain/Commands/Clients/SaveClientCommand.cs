@@ -4,11 +4,11 @@ using Flunt.Validations;
 
 namespace BarberShop.Domain.Commands
 {
-    public class CreateClientCommand : Notifiable, ICommand
+    public class SaveClientCommand : Notifiable, ICommand
     {
-        public CreateClientCommand()
+        public SaveClientCommand()
         { }
-        public CreateClientCommand(string firstName, string lastName, string number)
+        public SaveClientCommand(string firstName, string lastName, string number)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -28,6 +28,7 @@ namespace BarberShop.Domain.Commands
                 .HasMaxLen(FirstName, 64, "Firstname", "The value FirstName, must have less than 64 char.")
                 .HasMinLen(LastName, 2, "LastName", "The value LastName, must have at least 2 char.")
                 .HasMaxLen(LastName, 64, "LastName", "The value LastName, must have less than 64 char.")
+                .HasExactLengthIfNotNullOrEmpty(Number, 11, "PhoneNumber", "Phone number must contain 11 char.")
             );
         }
     }

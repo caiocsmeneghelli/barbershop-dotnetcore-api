@@ -4,16 +4,16 @@ using Flunt.Validations;
 
 namespace BarberShop.Domain.Commands
 {
-    public class CreateUserCommand : Notifiable, ICommand
+    public class SaveUserCommand : Notifiable, ICommand
     {
-        public CreateUserCommand(string userName, string password, string role)
+        public SaveUserCommand(string userName, string password)
         {
             this.UserName = userName;
             this.Password = password;
             this.Role = "Admin";
 
         }
-        public CreateUserCommand()
+        public SaveUserCommand()
         { }
         public string UserName { get; set; }
         public string Password { get; set; }
