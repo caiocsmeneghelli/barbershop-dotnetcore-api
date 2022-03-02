@@ -2,6 +2,7 @@ using BarberShop.Domain.Commands.Clients;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Handlers.Contracts;
 using BarberShop.Domain.Models;
+using BarberShop.Domain.Repositories;
 using Flunt.Notifications;
 
 namespace BarberShop.Domain.Handlers{

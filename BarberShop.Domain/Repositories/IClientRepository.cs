@@ -1,9 +1,10 @@
 using System;
 using BarberShop.Domain.Models;
+using BarberShop.Domain.Repositories.Contracts;
 
-public interface IClientRepository{
-    void Create(Client client);
-    void Update(Client client);
-    Client FindById(Guid id);
-    // Fix Problema de permissao
+namespace BarberShop.Domain.Repositories{
+    public interface IClientRepository : IRepository<Client>
+    {
+        
+    }
 }
