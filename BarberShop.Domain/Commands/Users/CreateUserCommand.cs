@@ -2,18 +2,18 @@ using BarberShop.Domain.Commands.Contracts;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BarberShop.Domain.Commands
+namespace BarberShop.Domain.Commands.Users
 {
-    public class SaveUserCommand : Notifiable, ICommand
+    public class CreateUserCommand : Notifiable, ICommand
     {
-        public SaveUserCommand(string userName, string password)
+        public CreateUserCommand(string userName, string password)
         {
             this.UserName = userName;
             this.Password = password;
             this.Role = "Admin";
 
         }
-        public SaveUserCommand()
+        public CreateUserCommand()
         { }
         public string UserName { get; set; }
         public string Password { get; set; }

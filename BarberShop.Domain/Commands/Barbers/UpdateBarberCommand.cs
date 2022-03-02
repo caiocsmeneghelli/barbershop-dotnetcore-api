@@ -1,21 +1,23 @@
+using System;
 using BarberShop.Domain.Commands.Contracts;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BarberShop.Domain.Commands{
+namespace BarberShop.Domain.Commands.Barbers{
     public class UpdateBarberCommand : Notifiable, ICommand
     {
         public UpdateBarberCommand()
         {
         }
 
-        public UpdateBarberCommand(string firstName, string lastName, string email)
+        public UpdateBarberCommand(Guid id, string firstName, string lastName, string email)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
         }
 
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -1,11 +1,13 @@
-using BarberShop.Domain.Commands;
+using BarberShop.Domain.Commands.Clients;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Handlers.Contracts;
 using BarberShop.Domain.Models;
 using Flunt.Notifications;
 
 namespace BarberShop.Domain.Handlers{
-    public class ClientHandler : Notifiable, IHandler<CreateClientCommand>
+    public class ClientHandler : Notifiable,
+                                 IHandler<CreateClientCommand>,
+                                 IHandler<UpdateClientCommand>
     {
         private readonly IClientRepository _repository;
         public ClientHandler(IClientRepository repository)
@@ -23,7 +25,22 @@ namespace BarberShop.Domain.Handlers{
 
             _repository.Create(client);
 
-            return new GenericCommandResult(true, "Client has been saved.", client);
+            return new GenericCommandResult(true, "Client has been created.", client);
+        }
+
+        public ICommandResult Handle(UpdateClientCommand command)
+        {
+            command.Validate();
+            if(command.Invalid)
+                new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
+
+            var client = _repository.FindById(command.Id);
+            
+            client.ChangePhoneNumber(command.Number);
+            
+            _repository.Update(client);
+
+            return new GenericCommandResult(true, "Client has been updated.", client);
         }
     }
 }

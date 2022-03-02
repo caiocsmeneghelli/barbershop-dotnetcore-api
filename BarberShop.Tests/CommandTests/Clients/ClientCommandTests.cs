@@ -1,4 +1,4 @@
-using BarberShop.Domain.Commands;
+using BarberShop.Domain.Commands.Clients;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BarberShop.Tests.CommandTests.Clients{

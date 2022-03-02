@@ -3,7 +3,7 @@ using BarberShop.Domain.Commands.Contracts;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BarberShop.Domain.Commands
+namespace BarberShop.Domain.Commands.Clients
 {
     public class UpdateClientCommand : Notifiable, ICommand
     {

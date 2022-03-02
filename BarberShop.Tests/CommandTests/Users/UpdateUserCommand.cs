@@ -1,12 +1,13 @@
-using BarberShop.Domain.Commands;
+using System;
+using BarberShop.Domain.Commands.Users;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BarberShop.Tests.CommandTests.Users{
     [TestClass]
-    public class SaveUserCommandTests{
-        private readonly SaveUserCommand _validCommand = new SaveUserCommand("t_cmeneghelli", "Lala3232");
-        private readonly SaveUserCommand _invalidCommand = new SaveUserCommand("t_cmeneghelli", "3232");
-        public SaveUserCommandTests()
+    public class UpdateUserCommandTests{
+        private readonly UpdateUserCommand _validCommand = new UpdateUserCommand(Guid.NewGuid(), "Lala3232");
+        private readonly UpdateUserCommand _invalidCommand = new UpdateUserCommand(Guid.NewGuid(), "3232");
+        public UpdateUserCommandTests()
         {
             _validCommand.Validate();
             _invalidCommand.Validate();
