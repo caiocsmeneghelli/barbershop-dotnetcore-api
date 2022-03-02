@@ -1,4 +1,6 @@
+using BarberShop.Domain.Models;
+
 public interface IClientRepository{
-    void Create();
-    void Update();
+    void Create(Client client);
+    void Update(Client client);
 }
