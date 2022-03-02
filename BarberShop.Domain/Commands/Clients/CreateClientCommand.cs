@@ -4,11 +4,11 @@ using Flunt.Validations;
 
 namespace BarberShop.Domain.Commands
 {
-    public class SaveClientCommand : Notifiable, ICommand
+    public class CreateClientCommand : Notifiable, ICommand
     {
-        public SaveClientCommand()
+        public CreateClientCommand()
         { }
-        public SaveClientCommand(string firstName, string lastName, string number)
+        public CreateClientCommand(string firstName, string lastName, string number)
         {
             this.FirstName = firstName;
             this.LastName = lastName;

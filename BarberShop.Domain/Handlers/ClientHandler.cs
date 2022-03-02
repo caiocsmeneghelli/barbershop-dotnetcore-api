@@ -5,14 +5,15 @@ using BarberShop.Domain.Models;
 using Flunt.Notifications;
 
 namespace BarberShop.Domain.Handlers{
-    public class ClientHandler : Notifiable, IHandler<SaveClientCommand>
+    public class ClientHandler : Notifiable, IHandler<CreateClientCommand>
     {
         private readonly IClientRepository _repository;
         public ClientHandler(IClientRepository repository)
         {
             _repository = repository;
         }
-        public ICommandResult Handle(SaveClientCommand command)
+
+        public ICommandResult Handle(CreateClientCommand command)
         {
             command.Validate();
             if(command.Invalid)

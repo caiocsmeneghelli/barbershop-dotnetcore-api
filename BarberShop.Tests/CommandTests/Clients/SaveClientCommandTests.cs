@@ -4,8 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BarberShop.Tests.CommandTests.Clients{
     [TestClass]
     public class SaveClientCommandTests{
-        private readonly SaveClientCommand _validCommand = new SaveClientCommand("Caio Cesar", "Serrano Meneghelli", "27999096912");
-        private readonly SaveClientCommand _invalidCommand = new SaveClientCommand("Caio Cesar", "Serrano Meneghelli", "2799909691222");
+        private readonly CreateClientCommand _validCommand = new CreateClientCommand("Caio Cesar", "Serrano Meneghelli", "27999096912");
+        private readonly CreateClientCommand _invalidCommand = new CreateClientCommand("Caio Cesar", "Serrano Meneghelli", "2799909691222");
 
         public SaveClientCommandTests()
         {
