@@ -4,6 +4,8 @@ namespace BarberShop.Domain.Models
 {
     public class Client : Entity
     {
+        public Client()
+        {}
         public Client(string name, string lastName, string phone)
         {
             this.Name = name;
