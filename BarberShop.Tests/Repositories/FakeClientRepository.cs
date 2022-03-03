@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BarberShop.Domain.Models;
 using BarberShop.Domain.Repositories;
 
-namespace BarberShop.Tests.HandlerTests.Clients
+namespace BarberShop.Tests.Repositories
 {
     public class FakeClientRepository : IClientRepository
     {

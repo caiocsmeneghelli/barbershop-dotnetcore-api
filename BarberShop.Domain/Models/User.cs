@@ -10,6 +10,8 @@ namespace BarberShop.Domain.Models
             this.Password = password;
             this.Role = role;
         }
+        public User()
+        {  }
         public string UserName { get; private set; }
         public string Password { get; private set; }
         public string Role { get; private set; }

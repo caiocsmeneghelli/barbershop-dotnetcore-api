@@ -2,6 +2,7 @@ using System;
 using BarberShop.Domain.Commands.Clients;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Handlers;
+using BarberShop.Tests.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BarberShop.Tests.HandlerTests.Clients

@@ -7,13 +7,13 @@ using Flunt.Notifications;
 
 namespace BarberShop.Domain.Handlers
 {
-    public class BaberHandler : Notifiable,
+    public class BarberHandler : Notifiable,
                                     IHandler<CreateBarberCommand>,
                                     IHandler<UpdateBarberCommand>,
                                     IHandler<ChangePasswordBarberCommand>
     {
         private readonly IBarberRepository _repository;
-        public BaberHandler(IBarberRepository repository)
+        public BarberHandler(IBarberRepository repository)
         {
             _repository = repository;
         }
