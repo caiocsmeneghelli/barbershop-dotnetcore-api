@@ -13,6 +13,9 @@ namespace BarberShop.Tests.HandlerTests.Clients
         private readonly ClientHandler handler = new ClientHandler(new FakeClientRepository());
         private readonly CreateClientCommand _validCreateClientCommand = 
             new CreateClientCommand("Caio Cesar", "Meneghelli", "27999096912");
+        private readonly CreateClientCommand _invalidCreateClientCommand = 
+            new CreateClientCommand("Caio Cesar", "D", "27999096912222");
+
         private readonly UpdateClientCommand _validUpdateClientCommand =
             new UpdateClientCommand(Guid.NewGuid(), "Caio Cesar", "Menneghelli", "27999096912");
         
@@ -21,6 +24,13 @@ namespace BarberShop.Tests.HandlerTests.Clients
         {
             var retorno = (GenericCommandResult)handler.Handle(_validCreateClientCommand);
             Assert.AreEqual(retorno.Success, true);
+        }
+
+        [TestMethod]
+        public void Criar_um_client_invalido()
+        {
+            var retorno = (GenericCommandResult)handler.Handle(_invalidCreateClientCommand);
+            Assert.AreEqual(retorno.Success, false);
         }
 
         [TestMethod]

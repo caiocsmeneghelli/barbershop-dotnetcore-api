@@ -20,7 +20,7 @@ namespace BarberShop.Domain.Handlers{
         {
             command.Validate();
             if(command.Invalid)
-                new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
+                return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
             
             var client = new Client(command.FirstName, command.LastName, command.Number);
 
@@ -33,7 +33,7 @@ namespace BarberShop.Domain.Handlers{
         {
             command.Validate();
             if(command.Invalid)
-                new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
+               return  new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
             var client = _repository.FindById(command.Id);
             

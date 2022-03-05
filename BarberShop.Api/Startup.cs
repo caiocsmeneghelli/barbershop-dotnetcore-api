@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BarberShop.Domain.Handlers;
 using BarberShop.Domain.Repositories;
 using BarberShop.Infra.Contexts;
 using BarberShop.Infra.Repositories;
@@ -33,7 +34,9 @@ namespace BarberShop.Api
 
             services.AddDbContext<DataContext>(opt => opt
                         .UseMySql(Configuration.GetConnectionString("connectionString")));
+
             services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<ClientHandler, ClientHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
