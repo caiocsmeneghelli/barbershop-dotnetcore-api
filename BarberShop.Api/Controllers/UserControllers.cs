@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Commands.Users;
@@ -24,8 +25,54 @@ namespace BarberShop.Api.Controllers
         public ActionResult<GenericCommandResult> Create([FromServices]UserHandler handler,
                                                         [FromBody] CreateUserCommand command)
         {
-            var result = handler.Handle(command);
-            return Ok(result);
+            try
+            {
+                var result = handler.Handle(command);
+                return Ok(result);
+            }
+            catch(Exception)
+            {
+                return BadRequest();
+            }
+            
+        }
+
+        [HttpPut]
+        [Route("")]
+        public ActionResult<GenericCommandResult> UpdatePassword([FromServices]UserHandler handler,
+                                                                    [FromServices]IUserRepository repository,
+                                                                    [FromBody] UpdateUserCommand command)
+        {
+            try
+            {
+                var user = repository.FindById(command.Id);
+                if(user is null)
+                    return NotFound();
+                var retorno = (GenericCommandResult)handler.Handle(command);
+                return Ok(retorno);
+            }
+            catch(Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult<User> Delete(Guid id, [FromServices]IUserRepository repository)
+        {
+            try
+            {
+                var user = repository.FindById(id);
+                if(user is null)
+                    return NotFound();
+                repository.Delete(id);
+                return Ok(user);
+            }
+            catch(Exception)
+            {
+                return BadRequest();
+            }
         }
     }
 }
