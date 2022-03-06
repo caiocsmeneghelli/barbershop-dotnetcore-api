@@ -46,9 +46,6 @@ namespace BarberShop.Infra.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("UserName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 

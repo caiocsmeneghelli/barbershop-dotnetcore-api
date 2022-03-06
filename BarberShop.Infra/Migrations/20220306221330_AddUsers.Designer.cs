@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BarberShop.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220306165845_AddUserMigrations")]
-    partial class AddUserMigrations
+    [Migration("20220306221330_AddUsers")]
+    partial class AddUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,9 +46,6 @@ namespace BarberShop.Infra.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Role")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserName")

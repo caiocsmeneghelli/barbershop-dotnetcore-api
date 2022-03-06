@@ -10,14 +10,12 @@ namespace BarberShop.Domain.Commands.Users
         {
             this.UserName = userName;
             this.Password = password;
-            this.Role = "Admin";
 
         }
         public CreateUserCommand()
         { }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
         public void Validate()
         {
             AddNotifications(

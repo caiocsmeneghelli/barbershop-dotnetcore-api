@@ -9,13 +9,12 @@ namespace BarberShop.Domain.Models
         public string Email { get; private set; }
         public Barber()
         { }
-        public Barber(string firstName, string lastName, string email, string userName, string password, string role)
-        : base(userName, password, role)
+        public Barber(string firstName, string lastName, string email, string userName, string password)
+        : base(userName, password)
         {
             FirstName = firstName;
             LastName = lastName;
             email = Email;
-            role = "Barber";
         }
 
         public void UpdateEmail(string email)

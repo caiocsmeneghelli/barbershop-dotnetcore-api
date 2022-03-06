@@ -25,7 +25,7 @@ namespace BarberShop.Domain.Handlers
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
             
             var barber = new Barber(command.FirstName, command.LastName, command.Email,
-                                         command.UserName, command.Password, command.Role);
+                                         command.UserName, command.Password);
             _repository.Create(barber);
 
             return new GenericCommandResult(true, "Barber has been created.", barber);

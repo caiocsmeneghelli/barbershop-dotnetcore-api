@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BarberShop.Infra.Migrations
 {
-    public partial class AddUserMigrations : Migration
+    public partial class AddUsers : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace BarberShop.Infra.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     UserName = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    Role = table.Column<string>(nullable: true)
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -4,18 +4,15 @@ namespace BarberShop.Domain.Models
 {
     public class User : Entity
     {
-        public User(string userName, string password, string role)
+        public User(string userName, string password)
         {
             this.UserName = userName;
             this.Password = password;
-            this.Role = role;
         }
         public User()
         {  }
         public string UserName { get; private set; }
         public string Password { get; private set; }
-        public string Role { get; private set; }
-
 
         public void ChangePassword(string password)
         {
