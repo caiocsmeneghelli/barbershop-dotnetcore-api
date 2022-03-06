@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using BarberShop.Domain.Commands.Contracts;
+using BarberShop.Domain.Commands.Users;
+using BarberShop.Domain.Handlers;
 using BarberShop.Domain.Models;
 using BarberShop.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +17,15 @@ namespace BarberShop.Api.Controllers
         public ActionResult<IEnumerable<User>> GetAll([FromServices]IUserRepository repository)
         {
             return Ok(repository.GetAll());
+        }
+        
+        [HttpPost]
+        [Route("")]
+        public ActionResult<GenericCommandResult> Create([FromServices]UserHandler handler,
+                                                        [FromBody] CreateUserCommand command)
+        {
+            var result = handler.Handle(command);
+            return Ok(result);
         }
     }
 }

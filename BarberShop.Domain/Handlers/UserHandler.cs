@@ -32,6 +32,7 @@ namespace BarberShop.Domain.Handlers
 
         public ICommandResult Handle(CreateUserCommand command)
         {
+            command.Role = "Admin";
             command.Validate();
             if(command.Invalid)
                 return new GenericCommandResult(false, "Ops, Something went wrong.", command.Notifications);
