@@ -7,6 +7,6 @@ namespace BarberShop.Domain.Repositories{
     public interface IClientRepository : IRepository<Client>
     {
         IEnumerable<Client> GetAll();
-        IEnumerable<Client> GetByName();
+        IEnumerable<Client> GetByName(string name);
     }
 }

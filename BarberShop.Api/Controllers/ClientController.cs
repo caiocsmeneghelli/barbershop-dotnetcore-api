@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BarberShop.Domain.Commands.Clients;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Handlers;
@@ -14,17 +16,38 @@ namespace BarberShop.Api.Controllers
     {
         [HttpGet]
         [Route("")]
-        public IEnumerable<Client> GetAll([FromServices]IClientRepository repository)
+        public ActionResult<IEnumerable<Client>> GetAll([FromServices]IClientRepository repository)
         {
-            return repository.GetAll();
+            return Ok(repository.GetAll());
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult<Client> GetById(Guid id,[FromServices]IClientRepository repository)
+        {
+            var client = repository.FindById(id);
+            if(client == null)
+                return NotFound();
+            return Ok(client);
+        }
+
+        [HttpGet]
+        [Route("getbyname/{name}")]
+        public ActionResult<IEnumerable<Client>> GetByName(string name, [FromServices]IClientRepository repository)
+        {
+            var result = repository.GetByName(name);
+            return Ok(result);
         }
 
         [HttpPost]
         [Route("")]
-        public GenericCommandResult Create([FromServices] ClientHandler handler,
+        public ActionResult<GenericCommandResult> Create([FromServices] ClientHandler handler,
                                             [FromBody]CreateClientCommand command)
         {
-            return (GenericCommandResult)handler.Handle(command);
+            var response = (GenericCommandResult)handler.Handle(command);
+            if(!response.Success) 
+                return BadRequest(response);
+            return Ok(response);
         }
     }
 }

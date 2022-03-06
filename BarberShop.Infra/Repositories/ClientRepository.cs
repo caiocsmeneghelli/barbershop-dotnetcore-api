@@ -31,9 +31,12 @@ namespace BarberShop.Infra.Repositories
             return _context.Clients.AsNoTracking();
         }
 
-        public IEnumerable<Client> GetByName()
+        public IEnumerable<Client> GetByName(string name)
         {
-            return _context.Clients.AsNoTracking();
+            return _context.Clients
+                    .AsNoTracking()
+                    .Where(reg => reg.Name.ToLower().Contains(name.ToLower())
+                    || reg.LastName.ToLower().Contains(name.ToLower()));
         }
 
         public void Update(Client entity)

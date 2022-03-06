@@ -18,7 +18,7 @@ namespace BarberShop.Tests.Repositories
         public IEnumerable<Client> GetAll()
         {   throw new NotImplementedException(); }
 
-        public IEnumerable<Client> GetByName()
+        public IEnumerable<Client> GetByName(string name)
         {
             throw new NotImplementedException();
         }
