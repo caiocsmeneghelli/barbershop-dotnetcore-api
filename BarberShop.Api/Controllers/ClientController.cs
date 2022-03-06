@@ -49,5 +49,16 @@ namespace BarberShop.Api.Controllers
                 return BadRequest(response);
             return Ok(response);
         }
+
+        [HttpPut]
+        [Route("")]
+        public ActionResult<GenericCommandResult> Update([FromBody] UpdateClientCommand command,
+                                                        [FromServices] ClientHandler handler)
+        {
+            var response = (GenericCommandResult)handler.Handle(command);
+            if(!response.Success)
+                return BadRequest(response);
+            return Ok(response);
+        }
     }
 }
