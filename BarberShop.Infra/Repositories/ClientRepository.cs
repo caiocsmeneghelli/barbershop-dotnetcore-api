@@ -44,5 +44,12 @@ namespace BarberShop.Infra.Repositories
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        public void Delete(Guid id)
+        {
+            var client = _context.Clients.Single(reg => reg.Id == id);
+            _context.Clients.Remove(client);
+            _context.SaveChanges();
+        }
     }
 }

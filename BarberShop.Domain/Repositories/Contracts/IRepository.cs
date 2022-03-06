@@ -7,6 +7,7 @@ namespace BarberShop.Domain.Repositories.Contracts
     {
         void Create(T entity);
         void Update(T entity);
+        void Delete(Guid id);
         T FindById(Guid id);
     }
 }

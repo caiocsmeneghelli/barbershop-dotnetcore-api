@@ -10,6 +10,9 @@ namespace BarberShop.Tests.Repositories{
         {
         }
 
+        public void Delete(Guid id)
+        { }
+
         public User FindById(Guid id)
         {
             return new User();

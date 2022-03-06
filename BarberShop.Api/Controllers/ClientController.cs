@@ -25,10 +25,14 @@ namespace BarberShop.Api.Controllers
         [Route("{id}")]
         public ActionResult<Client> GetById(Guid id,[FromServices]IClientRepository repository)
         {
-            var client = repository.FindById(id);
-            if(client == null)
+            try{
+                var client = repository.FindById(id);
+                return Ok(client);
+            }
+            catch(Exception)
+            {
                 return NotFound();
-            return Ok(client);
+            }
         }
 
         [HttpGet]
@@ -59,6 +63,20 @@ namespace BarberShop.Api.Controllers
             if(!response.Success)
                 return BadRequest(response);
             return Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult Delete([FromServices]IClientRepository repository, Guid id)
+        {
+            try{
+                repository.Delete(id);
+                return Ok();
+            }
+            catch(Exception)
+            {
+                return NotFound();
+            }
         }
     }
 }

@@ -9,6 +9,9 @@ namespace BarberShop.Tests.Repositories
         public void Create(Barber entity)
         { }
 
+        public void Delete(Guid id)
+        { }
+
         public Barber FindById(Guid id)
         {
             return new Barber();
