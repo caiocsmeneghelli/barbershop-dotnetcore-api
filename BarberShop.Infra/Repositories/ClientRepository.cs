@@ -23,7 +23,7 @@ namespace BarberShop.Infra.Repositories
 
         public Client FindById(Guid id)
         {
-            return _context.Clients.AsNoTracking().Single(reg => reg.Id == id);
+            return _context.Clients.AsNoTracking().SingleOrDefault(reg => reg.Id == id);
         }
 
         public IEnumerable<Client> GetAll()

@@ -23,7 +23,7 @@ namespace BarberShop.Infra.Repositories
 
         public void Delete(Guid id)
         {
-            var user = _context.Users.Single(reg => reg.Id == id);
+            var user = _context.Users.SingleOrDefault(reg => reg.Id == id);
             _context.Users.Remove(user);
             _context.SaveChanges();
         }
