@@ -23,7 +23,9 @@ namespace BarberShop.Domain.Handlers
                 return new GenericCommandResult(false, "Ops, Something went wrong.", command.Notifications);
 
             var user = _repository.FindById(command.Id);
-
+            if(user is null)
+                return new GenericCommandResult(false, "User not found.", command.Id);
+            
             user.ChangePassword(command.Password);
             _repository.Update(user);
 
