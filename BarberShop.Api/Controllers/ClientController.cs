@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BarberShop.Domain.Commands.Clients;
 using BarberShop.Domain.Commands.Contracts;
@@ -25,14 +26,10 @@ namespace BarberShop.Api.Controllers
         [Route("{id}")]
         public ActionResult<Client> GetById(Guid id,[FromServices]IClientRepository repository)
         {
-            try{
-                var client = repository.FindById(id);
-                return Ok(client);
-            }
-            catch(Exception)
-            {
+            var client = repository.FindById(id);
+            if(client is null)
                 return NotFound();
-            }
+            return Ok(client);
         }
 
         [HttpGet]
@@ -40,6 +37,8 @@ namespace BarberShop.Api.Controllers
         public ActionResult<IEnumerable<Client>> GetByName(string name, [FromServices]IClientRepository repository)
         {
             var result = repository.GetByName(name);
+            if(result.Count() == 0)
+                return NotFound();
             return Ok(result);
         }
 
@@ -69,14 +68,11 @@ namespace BarberShop.Api.Controllers
         [Route("{id}")]
         public ActionResult Delete([FromServices]IClientRepository repository, Guid id)
         {
-            try{
-                repository.Delete(id);
-                return Ok();
-            }
-            catch(Exception)
-            {
+            var client = repository.FindById(id);
+            if(client is null)
                 return NotFound();
-            }
+            repository.Delete(id);
+            return Ok(client);
         }
     }
 }

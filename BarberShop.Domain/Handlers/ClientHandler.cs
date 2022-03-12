@@ -36,6 +36,8 @@ namespace BarberShop.Domain.Handlers{
                return  new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
             var client = _repository.FindById(command.Id);
+            if(client is null)
+                return new GenericCommandResult(false, "Client not found.", command);
             
             client.ChangePhoneNumber(command.Number);
             
