@@ -38,6 +38,8 @@ namespace BarberShop.Domain.Handlers
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
             var barber = _repository.FindById(command.Id);
+            if(barber is null)
+                return new GenericCommandResult(false, "Ops, barber not found.", command);
 
             barber.UpdateEmail(command.Email);
             barber.UpdateName(command.FirstName, command.LastName);
