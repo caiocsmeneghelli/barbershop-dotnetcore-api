@@ -10,5 +10,6 @@ namespace BarberShop.Domain.Repositories
         IEnumerable<Schedule> GetAll();
         IEnumerable<Schedule> GetAllByBarber(Guid id);
         IEnumerable<Schedule> GetAllToday();
+        IEnumerable<Schedule> GetByDate(DateTime date);
     }
 }

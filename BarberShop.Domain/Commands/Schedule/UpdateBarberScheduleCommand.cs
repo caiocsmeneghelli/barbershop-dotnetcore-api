@@ -5,23 +5,23 @@ using Flunt.Validations;
 
 namespace BarberShop.Domain.Commands.Schedule
 {
-    public class UpdateClientScheduleCommand : Notifiable, ICommand
+    public class UpdateBarberScheduleCommand : Notifiable, ICommand
     {
-        public UpdateClientScheduleCommand(Guid idSchedule, Guid idClient)
+        public UpdateBarberScheduleCommand(Guid idSchedule, Guid idBarber)
         {
             IdSchedule = idSchedule;
-            IdClient = idClient;
+            IdBarber = idBarber;
         }
-        public UpdateClientScheduleCommand()
+        public UpdateBarberScheduleCommand()
         { }
         public Guid IdSchedule { get; set; }
-        public Guid IdClient { get; set; }
+        public Guid IdBarber { get; set; }
         public void Validate()
         {
             AddNotifications(
                 new Contract()
                     .IsNotNullOrEmpty(IdSchedule.ToString(), "IdSchedule", "Schedule cannot be null or empty.")
-                    .IsNotNullOrEmpty(IdClient.ToString(), "IdClient", "Client cannot be null or empty.")
+                    .IsNotNullOrEmpty(IdBarber.ToString(), "IdBarber", "Barber cannot be null or empty.")
             );
         }
     }
