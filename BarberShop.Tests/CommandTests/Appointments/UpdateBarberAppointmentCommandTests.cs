@@ -25,7 +25,8 @@ namespace BarberShop.Tests.CommandTests.Appointments
         }
 
         [TestMethod]
-        public void Dado_um_command_valido(){
+        public void Dado_um_command_valido()
+        {
             Assert.AreEqual(true, _validCommand.Valid);
         }
     }
