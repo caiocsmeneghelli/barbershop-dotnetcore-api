@@ -3,24 +3,24 @@ using BarberShop.Domain.Commands.Contracts;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BarberShop.Domain.Commands.Schedule
+namespace BarberShop.Domain.Commands.Appointment
 {
-    public class UpdateBarberScheduleCommand : Notifiable, ICommand
+    public class UpdateBarberAppointmentCommand : Notifiable, ICommand
     {
-        public UpdateBarberScheduleCommand(Guid idSchedule, Guid idBarber)
+        public UpdateBarberAppointmentCommand(Guid idAppointment, Guid idBarber)
         {
-            IdSchedule = idSchedule;
+            IdAppointment = idAppointment;
             IdBarber = idBarber;
         }
-        public UpdateBarberScheduleCommand()
+        public UpdateBarberAppointmentCommand()
         { }
-        public Guid IdSchedule { get; set; }
+        public Guid IdAppointment { get; set; }
         public Guid IdBarber { get; set; }
         public void Validate()
         {
             AddNotifications(
                 new Contract()
-                    .IsNotNullOrEmpty(IdSchedule.ToString(), "IdSchedule", "Schedule cannot be null or empty.")
+                    .IsNotNullOrEmpty(IdAppointment.ToString(), "IdAppointment", "Appointment cannot be null or empty.")
                     .IsNotNullOrEmpty(IdBarber.ToString(), "IdBarber", "Barber cannot be null or empty.")
             );
         }

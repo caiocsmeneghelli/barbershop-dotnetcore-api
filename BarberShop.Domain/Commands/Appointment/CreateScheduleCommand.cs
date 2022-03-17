@@ -3,17 +3,17 @@ using BarberShop.Domain.Commands.Contracts;
 using Flunt.Notifications;
 using Flunt.Validations;
 
-namespace BarberShop.Domain.Commands.Schedule
+namespace BarberShop.Domain.Commands.Appointment
 {
-    public class CreateScheduleCommand : Notifiable, ICommand
+    public class CreateAppointmentCommand : Notifiable, ICommand
     {
         public Guid IdBarber { get; set; }
         public Guid IdClient { get; set; }
         public DateTime DateTime { get; set; }
-        public CreateScheduleCommand()
+        public CreateAppointmentCommand()
         { }
 
-        public CreateScheduleCommand(Guid idBarber, Guid idClient, DateTime dateTime)
+        public CreateAppointmentCommand(Guid idBarber, Guid idClient, DateTime dateTime)
         {
             IdBarber = idBarber;
             IdClient = idClient;

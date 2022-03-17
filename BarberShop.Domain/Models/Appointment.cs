@@ -3,15 +3,15 @@ using BarberShop.Domain.Entities;
 
 namespace BarberShop.Domain.Models
 {
-    public class Schedule : Entity
+    public class Appointment : Entity
     {
         public DateTime Date { get; private set; }
         public Barber Barber { get; private set; }
         public Client Client { get; private set; }
 
-        public Schedule()
+        public Appointment()
         { }
-        public Schedule(DateTime date, Barber barber, Client client)
+        public Appointment(DateTime date, Barber barber, Client client)
         {
             Date = date;
             Barber = barber;
