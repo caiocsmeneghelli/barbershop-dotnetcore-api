@@ -4,6 +4,7 @@ using BarberShop.Domain.Handlers.Contracts;
 using BarberShop.Domain.Models;
 using BarberShop.Domain.Repositories;
 using Flunt.Notifications;
+using System;
 
 namespace BarberShop.Domain.Handlers
 {
@@ -31,7 +32,7 @@ namespace BarberShop.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
-            var appointment = _appointmentRepository.FindById(command.IdAppointment);
+            var appointment = _appointmentRepository.FindById(Guid.Parse(command.IdAppointment));
             if (appointment is null)
                 return new GenericCommandResult(false, "Appointment not found.", command.IdAppointment);
 
@@ -47,11 +48,11 @@ namespace BarberShop.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
-            var barber = _barberRepository.FindById(command.IdBarber);
+            var barber = _barberRepository.FindById(Guid.Parse(command.IdBarber));
             if (barber is null)
                 return new GenericCommandResult(false, "Barber not found.", command.IdBarber);
 
-            var appointment = _appointmentRepository.FindById(command.IdAppointment);
+            var appointment = _appointmentRepository.FindById(Guid.Parse(command.IdAppointment));
             if (appointment is null)
                 return new GenericCommandResult(false, "Appointment not found.", command.IdAppointment);
 
@@ -67,11 +68,11 @@ namespace BarberShop.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
-            var barber = _barberRepository.FindById(command.IdBarber);
+            var barber = _barberRepository.FindById(Guid.Parse(command.IdBarber));
             if (barber is null)
                 return new GenericCommandResult(false, "Barber not found.", command.IdBarber);
 
-            var client = _clientRepository.FindById(command.IdClient);
+            var client = _clientRepository.FindById(Guid.Parse(command.IdClient));
             if (client is null)
                 return new GenericCommandResult(false, "Client not found.", command.IdClient);
 

@@ -7,13 +7,13 @@ namespace BarberShop.Domain.Commands.Appointment
 {
     public class CreateAppointmentCommand : Notifiable, ICommand
     {
-        public Guid IdBarber { get; set; }
-        public Guid IdClient { get; set; }
+        public string IdBarber { get; set; }
+        public string IdClient { get; set; }
         public DateTime DateTime { get; set; }
         public CreateAppointmentCommand()
         { }
 
-        public CreateAppointmentCommand(Guid idBarber, Guid idClient, DateTime dateTime)
+        public CreateAppointmentCommand(string idBarber, string idClient, DateTime dateTime)
         {
             IdBarber = idBarber;
             IdClient = idClient;
@@ -22,11 +22,16 @@ namespace BarberShop.Domain.Commands.Appointment
 
         public void Validate()
         {
+            var tryParseIdBarber = Guid.TryParse(IdBarber, out Guid resultBarber);
+            var tryParseIdClient = Guid.TryParse(IdClient, out Guid resultClient);
+            if(!tryParseIdBarber)
+                AddNotification(IdBarber, "Invalid IdBarber.");
+            if(!tryParseIdClient)
+                AddNotification(IdClient, "Invalid IdClient.");
+
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsNotNullOrEmpty(IdBarber.ToString(), "IdBarber", "Barber cannot be null or empty.")
-                    .IsNotNullOrEmpty(IdClient.ToString(), "IdClient", "Client cannot be null or empty.")
                     .IsNotNullOrEmpty(DateTime.ToString(), "DateTime", "DateTime cannot be null")
             );
         }
