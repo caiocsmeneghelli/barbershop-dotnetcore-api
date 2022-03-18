@@ -11,5 +11,6 @@ namespace BarberShop.Infra.Contexts
         public DbSet<Client> Clients { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Barber> Barbers { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
     }
 }
