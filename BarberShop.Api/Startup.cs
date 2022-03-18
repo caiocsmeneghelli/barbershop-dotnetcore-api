@@ -43,6 +43,9 @@ namespace BarberShop.Api
 
             services.AddTransient<IBarberRepository, BarberRepository>();
             services.AddTransient<BarberHandler, BarberHandler>();
+
+            services.AddTransient<IAppointmentRepository, AppointmentRepository>();
+            services.AddTransient<AppointmentHandler, AppointmentHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
