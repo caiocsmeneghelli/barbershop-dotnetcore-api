@@ -30,27 +30,27 @@ namespace BarberShop.Infra.Repositories
 
         public Appointment FindById(Guid id)
         {
-            return _context.Appointments.Single(x => x.Id == id);
+            return _context.Appointments.AsNoTracking().Single(x => x.Id == id);
         }
 
         public IEnumerable<Appointment> GetAll()
         {
-            return _context.Appointments;
+            return _context.Appointments.AsNoTracking();
         }
 
         public IEnumerable<Appointment> GetAllByBarber(Guid id)
         {
-            return _context.Appointments.Where(x => x.Barber.Id == id);
+            return _context.Appointments.AsNoTracking().Where(x => x.Barber.Id == id);
         }
 
         public IEnumerable<Appointment> GetAllToday()
         {
-            return _context.Appointments.Where(x => x.Date.Date == DateTime.Now.Date);
+            return _context.Appointments.AsNoTracking().Where(x => x.Date.Date == DateTime.Now.Date);
         }
 
         public IEnumerable<Appointment> GetByDate(DateTime date)
         {
-            return _context.Appointments.Where(x => x.Date.Date == date.Date);
+            return _context.Appointments.AsNoTracking().Where(x => x.Date.Date == date.Date);
         }
 
         public void Update(Appointment entity)
