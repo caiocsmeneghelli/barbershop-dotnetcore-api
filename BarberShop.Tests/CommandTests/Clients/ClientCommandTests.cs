@@ -7,8 +7,8 @@ namespace BarberShop.Tests.CommandTests.Clients{
         private readonly CreateClientCommand _createValidCommand = new CreateClientCommand("Caio Cesar", "Serrano Meneghelli", "27999096912");
         private readonly CreateClientCommand _createInvalidCommand = new CreateClientCommand("Caio Cesar", "Serrano Meneghelli", "2799909691222");
 
-        private readonly UpdateClientCommand _updateValidCommand = new UpdateClientCommand(System.Guid.NewGuid(), "Caio Cesar", "Serrano Meneghelli", "27999096912");
-        private readonly UpdateClientCommand _updateInvalidCommand = new UpdateClientCommand(System.Guid.Empty, "Caio Cesar", "Serrano Meneghelli", "2799909691222");
+        private readonly UpdateClientCommand _updateValidCommand = new UpdateClientCommand(System.Guid.NewGuid().ToString(), "Caio Cesar", "Serrano Meneghelli", "27999096912");
+        private readonly UpdateClientCommand _updateInvalidCommand = new UpdateClientCommand(System.Guid.Empty.ToString(), "Caio Cesar", "Serrano Meneghelli", "2799909691222");
 
         public ClientCommandTests()
         {

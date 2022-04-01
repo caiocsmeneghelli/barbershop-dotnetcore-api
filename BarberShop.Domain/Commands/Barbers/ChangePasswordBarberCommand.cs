@@ -7,17 +7,20 @@ namespace BarberShop.Domain.Commands.Barbers
 {
     public class ChangePasswordBarberCommand : Notifiable, ICommand
     {
-        public ChangePasswordBarberCommand(Guid id, string password)
+        public ChangePasswordBarberCommand(string id, string password)
         {
             Id = id;
             Password = password;
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Password { get; set; }
 
         public void Validate()
         {
+            var tryParseId = Guid.TryParse(Id, out Guid tryParseIdResult);
+            if(!tryParseId)
+                AddNotification(Id, "Invalid Id.");
             AddNotifications(
                 new Contract()
                     .Requires()

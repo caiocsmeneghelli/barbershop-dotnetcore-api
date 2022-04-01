@@ -1,3 +1,4 @@
+using System;
 using BarberShop.Domain.Commands.Barbers;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Handlers.Contracts;
@@ -37,7 +38,7 @@ namespace BarberShop.Domain.Handlers
             if(command.Invalid)
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
-            var barber = _repository.FindById(command.Id);
+            var barber = _repository.FindById(Guid.Parse(command.Id));
             if(barber is null)
                 return new GenericCommandResult(false, "Ops, barber not found.", command);
 
@@ -55,7 +56,7 @@ namespace BarberShop.Domain.Handlers
             if(command.Invalid)
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
-            var barber = _repository.FindById(command.Id);
+            var barber = _repository.FindById(Guid.Parse(command.Id));
 
             barber.ChangePassword(command.Password);
             

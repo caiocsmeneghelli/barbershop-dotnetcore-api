@@ -17,13 +17,13 @@ namespace BarberShop.Tests.HandlerTests.Barbers
             new CreateBarberCommand("Caio Cesar", "Serrano Meneghelli",
             "caiocsmeneghelli@gmail.com", "caiocsmeneghelli", "pp");
         private readonly UpdateBarberCommand _invalidUpdateBarberCommand =
-            new UpdateBarberCommand(Guid.NewGuid(), "Caio Cesar", "Meneghelli", "caioc");
+            new UpdateBarberCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Meneghelli", "caioc");
         private readonly UpdateBarberCommand _validUpdateBarberCommand =
-            new UpdateBarberCommand(Guid.NewGuid(), "Caio Cesar", "Meneghelli", "caiocsmeneghelli@gmail.com");
+            new UpdateBarberCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Meneghelli", "caiocsmeneghelli@gmail.com");
         private readonly ChangePasswordBarberCommand _invalidChangePasswordBarberCommand =
-            new ChangePasswordBarberCommand(Guid.NewGuid(), "Lala");
+            new ChangePasswordBarberCommand(Guid.NewGuid().ToString(), "Lala");
         private readonly ChangePasswordBarberCommand _validChangePasswordBarberCommand =
-           new ChangePasswordBarberCommand(Guid.NewGuid(), "Lala3232");
+           new ChangePasswordBarberCommand(Guid.NewGuid().ToString(), "Lala3232");
         private readonly BarberHandler handler = new BarberHandler(new FakeBarberRepository());
 
         [TestMethod]

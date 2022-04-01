@@ -1,3 +1,4 @@
+using System;
 using BarberShop.Domain.Commands.Clients;
 using BarberShop.Domain.Commands.Contracts;
 using BarberShop.Domain.Handlers.Contracts;
@@ -35,7 +36,7 @@ namespace BarberShop.Domain.Handlers{
             if(command.Invalid)
                return  new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
 
-            var client = _repository.FindById(command.Id);
+            var client = _repository.FindById(Guid.Parse(command.Id));
             if(client is null)
                 return new GenericCommandResult(false, "Client not found.", command);
             

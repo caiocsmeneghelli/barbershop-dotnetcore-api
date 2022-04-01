@@ -17,7 +17,7 @@ namespace BarberShop.Tests.HandlerTests.Clients
             new CreateClientCommand("Caio Cesar", "D", "27999096912222");
 
         private readonly UpdateClientCommand _validUpdateClientCommand =
-            new UpdateClientCommand(Guid.NewGuid(), "Caio Cesar", "Menneghelli", "27999096912");
+            new UpdateClientCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Menneghelli", "27999096912");
         
         [TestMethod]
         public void Criar_um_client_valido()

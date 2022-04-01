@@ -5,11 +5,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BarberShop.Tests.CommandTests.Barbers{
     [TestClass]
     public class UpdateBarberCommandTests{
-        private readonly UpdateBarberCommand _validCommand = new UpdateBarberCommand(Guid.NewGuid(), "Caio Cesar", "Serrano Meneghelli", "caiocsmeneghelli@outlook.com");
-        private readonly UpdateBarberCommand _invalidCommand = new UpdateBarberCommand(Guid.NewGuid(), "Caio Cesar", "Serrano Meneghelli", "cai");
+        private readonly UpdateBarberCommand _validCommand = new UpdateBarberCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Serrano Meneghelli", "caiocsmeneghelli@outlook.com");
+        private readonly UpdateBarberCommand _invalidCommand = new UpdateBarberCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Serrano Meneghelli", "cai");
 
-        private readonly ChangePasswordBarberCommand _validUpdateCommand = new ChangePasswordBarberCommand(Guid.NewGuid(), "Lala3232");
-        private readonly ChangePasswordBarberCommand _invalidUpdateComamand = new ChangePasswordBarberCommand(Guid.NewGuid(), "lala");
+        private readonly ChangePasswordBarberCommand _validUpdateCommand = new ChangePasswordBarberCommand(Guid.NewGuid().ToString(), "Lala3232");
+        private readonly ChangePasswordBarberCommand _invalidUpdateComamand = new ChangePasswordBarberCommand(Guid.NewGuid().ToString(), "lala");
 
         public UpdateBarberCommandTests()
         {

@@ -9,17 +9,20 @@ namespace BarberShop.Domain.Commands.Clients
     {
         public UpdateClientCommand()
         { }
-        public UpdateClientCommand(Guid id, string firstName, string lastName, string number)
+        public UpdateClientCommand(string id, string firstName, string lastName, string number)
         {
             this.Id = id;
             this.Number = number;
 
         }
-        public Guid Id {get;set;}
+        public string Id {get;set;}
         public string Number { get; set; }
 
         public void Validate()
         {
+            var tryParseId = Guid.TryParse(Id, out Guid tryParseIdResult);
+            if(!tryParseId)
+                AddNotification(Id, "Id is invalid");
             AddNotifications(
                 new Contract()
                 .Requires()
