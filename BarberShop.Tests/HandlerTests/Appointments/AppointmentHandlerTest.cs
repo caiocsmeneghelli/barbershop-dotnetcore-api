@@ -70,5 +70,21 @@ namespace BarberShop.Tests.HandlerTests.Appointment
             var retorno = (GenericCommandResult)handler.Handle(_invalidUpdateDateTimeCommand);
             Assert.AreEqual(retorno.Success, false);
         }
+
+        [TestMethod]
+        public void Testar_a_hora_que_sera_salva_no_create_command_valido()
+        {
+            var retorno = (GenericCommandResult)handler.Handle(_validCreateAppointmentCommand);
+            var appointment = (BarberShop.Domain.Models.Appointment)retorno.Data;
+            Assert.AreEqual(appointment.Date.Minute, 0);
+        }
+
+        [TestMethod]
+        public void verificar_valor_minuto_no_update_command_date_valido()
+        {
+            var retorno = (GenericCommandResult)handler.Handle(_validUpdateDateTimeCommand);
+            var appointment = (BarberShop.Domain.Models.Appointment)retorno.Data;
+            Assert.AreEqual(appointment.Date.Minute, 0);
+        }
     }
 }

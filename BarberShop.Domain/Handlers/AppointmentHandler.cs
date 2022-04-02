@@ -77,6 +77,7 @@ namespace BarberShop.Domain.Handlers
                 return new GenericCommandResult(false, "Client not found.", command.IdClient);
 
             var appointment = new Appointment(command.DateTime, barber, client);
+            appointment.RoundHour();
             _appointmentRepository.Create(appointment);
 
             return new GenericCommandResult(true, "New appointment has been created.", appointment);
