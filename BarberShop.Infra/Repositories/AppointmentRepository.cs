@@ -35,27 +35,39 @@ namespace BarberShop.Infra.Repositories
 
         public Appointment FindByIdAsNoTracking(Guid id)
         {
-            return _context.Appointments.AsNoTracking().Single(x => x.Id == id);
+            return _context.Appointments
+                .AsNoTracking()
+                .Single(x => x.Id == id);
         }
 
         public IEnumerable<Appointment> GetAll()
         {
-            return _context.Appointments.Include(x => x.Barber).Include(x => x.Client);
+            return _context.Appointments
+                .Include(x => x.Barber)
+                .Include(x => x.Client);
         }
 
         public IEnumerable<Appointment> GetAllByBarber(Guid id)
         {
-            return _context.Appointments.AsNoTracking().Where(x => x.Barber.Id == id);
+            return _context.Appointments
+                .AsNoTracking()
+                .Where(x => x.Barber.Id == id)
+                .Include(x => x.Barber).Include(x => x.Client);
         }
 
         public IEnumerable<Appointment> GetAllToday()
         {
-            return _context.Appointments.AsNoTracking().Where(x => x.Date.Date == DateTime.Now.Date);
+            return _context.Appointments
+                .AsNoTracking()
+                .Where(x => x.Date.Date == DateTime.Now.Date)
+                .Include(x => x.Barber).Include(x => x.Client);
         }
 
         public IEnumerable<Appointment> GetByDate(DateTime date)
         {
-            return _context.Appointments.AsNoTracking().Where(x => x.Date.Date == date.Date);
+            return _context.Appointments
+                .AsNoTracking().Where(x => x.Date.Date == date.Date)
+                .Include(x => x.Barber).Include(x => x.Client);
         }
 
         public void Update(Appointment entity)
