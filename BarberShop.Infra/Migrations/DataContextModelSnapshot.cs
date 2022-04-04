@@ -41,6 +41,26 @@ namespace BarberShop.Infra.Migrations
                     b.ToTable("Appointments");
                 });
 
+            modelBuilder.Entity("BarberShop.Domain.Models.Barber", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Barbers");
+                });
+
             modelBuilder.Entity("BarberShop.Domain.Models.Client", b =>
                 {
                     b.Property<Guid>("Id")
@@ -59,45 +79,6 @@ namespace BarberShop.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("BarberShop.Domain.Models.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
-                });
-
-            modelBuilder.Entity("BarberShop.Domain.Models.Barber", b =>
-                {
-                    b.HasBaseType("BarberShop.Domain.Models.User");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasDiscriminator().HasValue("Barber");
                 });
 
             modelBuilder.Entity("BarberShop.Domain.Models.Appointment", b =>

@@ -3,10 +3,38 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BarberShop.Infra.Migrations
 {
-    public partial class CreateAppointmentCreation : Migration
+    public partial class InitialMigrationsWithFixes : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Barbers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Barbers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clients",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Appointments",
                 columns: table => new
@@ -20,9 +48,9 @@ namespace BarberShop.Infra.Migrations
                 {
                     table.PrimaryKey("PK_Appointments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Appointments_Users_BarberId",
+                        name: "FK_Appointments_Barbers_BarberId",
                         column: x => x.BarberId,
-                        principalTable: "Users",
+                        principalTable: "Barbers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -48,6 +76,12 @@ namespace BarberShop.Infra.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Appointments");
+
+            migrationBuilder.DropTable(
+                name: "Barbers");
+
+            migrationBuilder.DropTable(
+                name: "Clients");
         }
     }
 }
