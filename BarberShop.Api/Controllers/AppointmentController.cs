@@ -50,5 +50,23 @@ namespace BarberShop.Api.Controllers
         {
             return Ok(repository.GetAllToday());
         }
+
+        [HttpPut]
+        [Route("update-barber")]
+        public ActionResult<GenericCommandResult> UpdateBarber([FromServices]AppointmentHandler handler,
+                                                                    [FromBody]UpdateBarberAppointmentCommand command)
+        {
+            var result = (GenericCommandResult)handler.Handle(command);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        [Route("update-date")]
+        public ActionResult<GenericCommandResult> UpdateDate([FromServices]AppointmentHandler handler,
+                                                                [FromBody]UpdateDateTimeAppointmentCommand command)
+        {
+            var result = (GenericCommandResult)handler.Handle(command);
+            return Ok(result);
+        }
     }
 }
