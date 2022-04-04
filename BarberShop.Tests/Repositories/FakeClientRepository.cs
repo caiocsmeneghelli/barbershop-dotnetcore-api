@@ -18,6 +18,11 @@ namespace BarberShop.Tests.Repositories
             return new Client();
         }
 
+        public Client FindByIdAsNoTracking(Guid id)
+        {
+            return new Client();
+        }
+
         public IEnumerable<Client> GetAll()
         {   throw new NotImplementedException(); }
 

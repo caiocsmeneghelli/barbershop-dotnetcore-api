@@ -18,6 +18,11 @@ namespace BarberShop.Tests.Repositories
             return new Barber();
         }
 
+        public Barber FindByIdAsNoTracking(Guid id)
+        {
+            return new Barber();
+        }
+
         public IEnumerable<Barber> GetAll()
         {
             return new List<Barber>();

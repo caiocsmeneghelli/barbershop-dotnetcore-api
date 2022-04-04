@@ -31,9 +31,13 @@ namespace BarberShop.Infra.Repositories
 
         public Barber FindById(Guid id)
         {
-            return _context.Barbers.AsNoTracking().SingleOrDefault(x => x.Id == id);
+            return _context.Barbers.SingleOrDefault(x => x.Id == id);
         }
 
+        public Barber FindByIdAsNoTracking(Guid id)
+        {
+            return _context.Barbers.AsNoTracking().SingleOrDefault(x => x.Id == id);
+        }
         public IEnumerable<Barber> GetAll()
         {
             return _context.Barbers.AsNoTracking();

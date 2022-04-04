@@ -9,7 +9,7 @@ namespace BarberShop.Tests.CommandTests.Barbers{
             "caiocsmeneghelli@gmail.com");
         private readonly CreateBarberCommand _invalidCommand = 
             new CreateBarberCommand("Caio Cesar", "Serrano Meneghelli", 
-            "caiocsmeneghelli@gmail.com"); 
+            "caiocsmeneghelli"); 
 
         public CreateBarberCommandTests()
         {

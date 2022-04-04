@@ -18,6 +18,11 @@ namespace BarberShop.Tests.Repositories
             return new Appointment();
         }
 
+        public Appointment FindByIdAsNoTracking(Guid id)
+        {
+            return new Appointment();
+        }
+
         public IEnumerable<Appointment> GetAll()
         {
             return new List<Appointment>();

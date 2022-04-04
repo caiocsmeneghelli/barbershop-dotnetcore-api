@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using BarberShop.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 

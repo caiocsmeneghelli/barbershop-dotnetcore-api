@@ -30,12 +30,17 @@ namespace BarberShop.Infra.Repositories
 
         public Appointment FindById(Guid id)
         {
+            return _context.Appointments.Single(x => x.Id == id);
+        }
+
+        public Appointment FindByIdAsNoTracking(Guid id)
+        {
             return _context.Appointments.AsNoTracking().Single(x => x.Id == id);
         }
 
         public IEnumerable<Appointment> GetAll()
         {
-            return _context.Appointments.AsNoTracking();
+            return _context.Appointments.Include(x => x.Barber).Include(x => x.Client);
         }
 
         public IEnumerable<Appointment> GetAllByBarber(Guid id)

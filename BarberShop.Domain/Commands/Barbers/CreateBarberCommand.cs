@@ -24,7 +24,6 @@ namespace BarberShop.Domain.Commands.Barbers
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .IsEmail(Email, "Email", "The value must be a Email.")
                     .HasMinLen(Email, 6, "Email", "The value Email, must have more than 6 char.")
                     .HasMaxLen(Email, 64, "Email", "The value Email, must have less than 64 char.")
                     .HasMinLen(FirstName, 2, "FirstName", "The value FirstName, must have at least 2 char.")

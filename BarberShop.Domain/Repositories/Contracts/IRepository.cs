@@ -9,5 +9,6 @@ namespace BarberShop.Domain.Repositories.Contracts
         void Update(T entity);
         void Delete(Guid id);
         T FindById(Guid id);
+        T FindByIdAsNoTracking(Guid id);
     }
 }

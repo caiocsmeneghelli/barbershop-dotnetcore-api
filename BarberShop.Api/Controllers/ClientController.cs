@@ -26,7 +26,7 @@ namespace BarberShop.Api.Controllers
         [Route("{id}")]
         public ActionResult<Client> GetById(Guid id,[FromServices]IClientRepository repository)
         {
-            var client = repository.FindById(id);
+            var client = repository.FindByIdAsNoTracking(id);
             if(client is null)
                 return NotFound();
             return Ok(client);
