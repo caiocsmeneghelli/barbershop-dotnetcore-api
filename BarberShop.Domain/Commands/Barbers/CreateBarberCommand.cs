@@ -8,32 +8,22 @@ namespace BarberShop.Domain.Commands.Barbers
     {
         public CreateBarberCommand()
         { }
-        public CreateBarberCommand(string firstName, string lastName, string email, string userName, string password)
+        public CreateBarberCommand(string firstName, string lastName, string email)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Email = email;
-            this.UserName = userName;
-            this.Password = password;
-            this.Role = "Barber";
 
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
 
         public void Validate()
         {
             AddNotifications(
                 new Contract()
                     .Requires()
-                    .HasMinLen(UserName, 4, "UserName", "The value Username, must have more than 3 char.")
-                    .HasMaxLen(UserName, 32, "UserName", "The value Username, must have less than 20 char.")
-                    .HasMinLen(Password, 6, "Password", "The value Password, must have more than 6 char.")
-                    .HasMaxLen(Password, 32, "Password", "The value Password, must have less than 32 char.")
                     .IsEmail(Email, "Email", "The value must be a Email.")
                     .HasMinLen(Email, 6, "Email", "The value Email, must have more than 6 char.")
                     .HasMaxLen(Email, 64, "Email", "The value Email, must have less than 64 char.")

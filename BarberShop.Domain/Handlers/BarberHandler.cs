@@ -10,8 +10,7 @@ namespace BarberShop.Domain.Handlers
 {
     public class BarberHandler : Notifiable,
                                     IHandler<CreateBarberCommand>,
-                                    IHandler<UpdateBarberCommand>,
-                                    IHandler<ChangePasswordBarberCommand>
+                                    IHandler<UpdateBarberCommand>
     {
         private readonly IBarberRepository _repository;
         public BarberHandler(IBarberRepository repository)
@@ -25,8 +24,7 @@ namespace BarberShop.Domain.Handlers
             if(command.Invalid)
                 return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
             
-            var barber = new Barber(command.FirstName, command.LastName, command.Email,
-                                         command.UserName, command.Password);
+            var barber = new Barber(command.FirstName, command.LastName, command.Email);
             _repository.Create(barber);
 
             return new GenericCommandResult(true, "Barber has been created.", barber);
@@ -48,21 +46,6 @@ namespace BarberShop.Domain.Handlers
             _repository.Update(barber);
 
             return new GenericCommandResult(true, "Barber has been updated.", barber);
-        }
-
-        public ICommandResult Handle(ChangePasswordBarberCommand command)
-        {
-            command.Validate();
-            if(command.Invalid)
-                return new GenericCommandResult(false, "Ops, something went wrong.", command.Notifications);
-
-            var barber = _repository.FindById(Guid.Parse(command.Id));
-
-            barber.ChangePassword(command.Password);
-            
-            _repository.Update(barber);
-
-            return new GenericCommandResult(true, "Barber password has been updated.", barber);
         }
     }
 }

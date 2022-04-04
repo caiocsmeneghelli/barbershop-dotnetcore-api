@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BarberShop.Api.Controllers
 {
     [ApiController]
-    [Route("v1/barber")]
+    [Route("v1/barbers")]
     public class BarberController : ControllerBase
     {
         [HttpGet]
@@ -52,18 +52,6 @@ namespace BarberShop.Api.Controllers
                 return BadRequest(result);
             return Ok(result);
         }
-
-        [HttpPut]
-        [Route("change-password")]
-        public ActionResult<GenericCommandResult> UpdatePassword([FromBody] ChangePasswordBarberCommand command,
-                                                                [FromServices] BarberHandler handler)
-        { 
-            var result = (GenericCommandResult)handler.Handle(command);
-            if(!result.Success)
-                return BadRequest(result);
-            return Ok(result);
-        }
-
         [HttpDelete]
         [Route("{id}")]
         public ActionResult Delete([FromServices] IBarberRepository repository, Guid id)

@@ -12,18 +12,14 @@ namespace BarberShop.Tests.HandlerTests.Barbers
     {
         private readonly CreateBarberCommand _validCreateBarberCommand =
             new CreateBarberCommand("Caio Cesar", "Serrano Meneghelli",
-            "caiocsmeneghelli@gmail.com", "caiocsmeneghelli", "Password");
+            "caiocsmeneghelli@gmail.com");
         private readonly CreateBarberCommand _invalidCreateBarberCommand =
             new CreateBarberCommand("Caio Cesar", "Serrano Meneghelli",
-            "caiocsmeneghelli@gmail.com", "caiocsmeneghelli", "pp");
+            "caio");
         private readonly UpdateBarberCommand _invalidUpdateBarberCommand =
             new UpdateBarberCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Meneghelli", "caioc");
         private readonly UpdateBarberCommand _validUpdateBarberCommand =
             new UpdateBarberCommand(Guid.NewGuid().ToString(), "Caio Cesar", "Meneghelli", "caiocsmeneghelli@gmail.com");
-        private readonly ChangePasswordBarberCommand _invalidChangePasswordBarberCommand =
-            new ChangePasswordBarberCommand(Guid.NewGuid().ToString(), "Lala");
-        private readonly ChangePasswordBarberCommand _validChangePasswordBarberCommand =
-           new ChangePasswordBarberCommand(Guid.NewGuid().ToString(), "Lala3232");
         private readonly BarberHandler handler = new BarberHandler(new FakeBarberRepository());
 
         [TestMethod]
@@ -52,20 +48,6 @@ namespace BarberShop.Tests.HandlerTests.Barbers
         {
             var retorno = (GenericCommandResult)handler.Handle(_invalidUpdateBarberCommand);
             Assert.AreEqual(retorno.Success, false);
-        }
-
-        [TestMethod]
-        public void Dado_um_password_command_invalido()
-        {
-            var retorno = (GenericCommandResult)handler.Handle(_invalidChangePasswordBarberCommand);
-            Assert.AreEqual(retorno.Success, false);
-        }
-
-        [TestMethod]
-        public void Dado_um_password_command_valido()
-        {
-            var retorno = (GenericCommandResult)handler.Handle(_validChangePasswordBarberCommand);
-            Assert.AreEqual(retorno.Success, true);
         }
     }
 }

@@ -6,10 +6,10 @@ namespace BarberShop.Tests.CommandTests.Barbers{
     public class CreateBarberCommandTests{
         private readonly CreateBarberCommand _validCommand = 
             new CreateBarberCommand("Caio Cesar", "Serrano Meneghelli", 
-            "caiocsmeneghelli@gmail.com", "caiocsmeneghelli", "Password");
+            "caiocsmeneghelli@gmail.com");
         private readonly CreateBarberCommand _invalidCommand = 
             new CreateBarberCommand("Caio Cesar", "Serrano Meneghelli", 
-            "caiocsmeneghelli@gmail.com", "caiocsmeneghelli", "Pass"); 
+            "caiocsmeneghelli@gmail.com"); 
 
         public CreateBarberCommandTests()
         {
