@@ -38,9 +38,6 @@ namespace BarberShop.Api
             services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<ClientHandler, ClientHandler>();
 
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<UserHandler, UserHandler>();
-
             services.AddTransient<IBarberRepository, BarberRepository>();
             services.AddTransient<BarberHandler, BarberHandler>();
 
