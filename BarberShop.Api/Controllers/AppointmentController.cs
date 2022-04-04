@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using BarberShop.Domain.Commands.Appointment;
 using BarberShop.Domain.Commands.Contracts;
@@ -25,6 +26,29 @@ namespace BarberShop.Api.Controllers
         {
             var result = (GenericCommandResult)handler.Handle(command);
             return Ok(result);
-        }                                                            
+        }           
+
+        [HttpGet]
+        [Route("get-by-barber/{appointmentId}")]
+        public ActionResult<IEnumerable> GetAllByBarber([FromServices]IAppointmentRepository repository, 
+                                                            Guid appointmentId)
+        {
+            return Ok(repository.GetAllByBarber(appointmentId));
+        }
+
+        [HttpGet]
+        [Route("get-by-date/{dateTime}")]
+        public ActionResult<IEnumerable> GetAllByDate([FromServices]IAppointmentRepository repository, 
+                                                        DateTime dateTime)
+        {
+            return Ok(repository.GetByDate(dateTime));
+        }
+
+        [HttpGet]
+        [Route("get-all-today")]
+        public ActionResult<IEnumerable> GetAllToday([FromServices]IAppointmentRepository repository)
+        {
+            return Ok(repository.GetAllToday());
+        }
     }
 }
